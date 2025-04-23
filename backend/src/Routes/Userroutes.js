@@ -24,4 +24,22 @@ userRouter.get('/users/:id', async (req, res) => {
   }
 });
 
+
+// Add new user
+userRouter.post('/users', async (req, res) => {
+    try {
+      const { name, email } = req.body;
+  
+      const newUser = new User({
+        name,
+        email
+      });
+  
+      const savedUser = await newUser.save();
+      res.status(201).json(savedUser);
+    } catch (err) {
+      res.status(400).json({ message: "Error adding user", error: err.message });
+    }
+  });
+  
 module.exports = userRouter;
