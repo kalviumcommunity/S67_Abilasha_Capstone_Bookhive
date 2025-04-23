@@ -26,5 +26,25 @@ router.get('/books/:id', async (req, res) => {
   }
 });
 
+// Add new book
+router.post('/books', async (req, res) => {
+    try {
+      const { title, author, genre, description, publishedDate } = req.body;
+  
+      const newBook = new Book({
+        title,
+        author,
+        genre,
+        description,
+        publishedDate
+      });
+  
+      const savedBook = await newBook.save();
+      res.status(201).json(savedBook);
+    } catch (err) {
+      res.status(400).json({ message: "Error adding book", error: err.message });
+    }
+  });
+  
 
 module.exports = router;
