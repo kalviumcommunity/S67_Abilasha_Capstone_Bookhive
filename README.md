@@ -202,7 +202,11 @@ Run final tests on all user journeys
 Fix critical bugs
 
 
+<<<<<<< HEAD
 
 
 
 *Backend deployment link* - https://s67-abilasha-capstone-bookhive.onrender.com/
+=======
+*Backend deployment link* - https://s67-abilasha-capstone-bookhive.onrender.com/
+>>>>>>> b6624684f21e893b7980f808e8c9d3da6fb9f3dc
