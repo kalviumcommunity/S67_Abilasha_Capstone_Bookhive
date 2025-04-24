@@ -41,5 +41,27 @@ userRouter.post('/users', async (req, res) => {
       res.status(400).json({ message: "Error adding user", error: err.message });
     }
   });
+
+  
+  // UPDATE a user by ID
+userRouter.put('/users/:id', async (req, res) => {
+    try {
+      const updates = req.body;
+      const options = { new: true };
+  
+      const updatedUser = await User.findByIdAndUpdate(
+        req.params.id,
+        updates,
+        options
+      );
+  
+      if (!updatedUser)
+        return res.status(404).json({ message: 'User not found' });
+  
+      res.json(updatedUser);
+    } catch (err) {
+      res.status(400).json({ message: 'Error updating user', error: err.message });
+    }
+  });
   
 module.exports = userRouter;
