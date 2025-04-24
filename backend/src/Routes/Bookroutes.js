@@ -47,4 +47,26 @@ router.post('/books', async (req, res) => {
   });
   
 
+  // UPDATE a book by ID
+router.put('/books/:id', async (req, res) => {
+    try {
+      const updates = req.body;           // everything the client sends
+      const options = { new: true };      // return the updated doc
+  
+      const updatedBook = await Book.findByIdAndUpdate(
+        req.params.id,
+        updates,
+        options
+      );
+  
+      if (!updatedBook)
+        return res.status(404).json({ message: 'Book not found' });
+  
+      res.json(updatedBook);              
+    } catch (err) {
+      res.status(400).json({ message: 'Error updating book', error: err.message });
+    }
+  });
+  
+
 module.exports = router;
