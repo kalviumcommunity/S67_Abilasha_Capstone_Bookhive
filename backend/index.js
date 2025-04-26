@@ -19,6 +19,7 @@ app.use(cors());
 // Routes
 app.use("/api", bookRoutes); // ✅ all book routes accessible at /api/books
 app.use("api", userRouter); // ✅ all user routes accessible at /api/users
+app.use("/api/users",userRouter)
 
 // Base route
 app.get('/', (req, res) => {
